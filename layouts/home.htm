@@ -1,0 +1,179 @@
+description = "Default layout"
+
+[session]
+
+[staticMenu mainMenu]
+code = "main-menu"
+
+[staticPage]
+==
+<?
+use RainLab\Pages\Classes\PageList;
+use RainLab\Pages\Classes\Page;
+function onStart()
+{
+    // @todo Need a way to list all sub pages
+    $pageList = new PageList($this->getTheme());
+    $page = Page::find('chairs');
+    $result= $pageList->getPageSubTree($page);
+}
+?>
+==
+<!DOCTYPE html>
+<html>
+    <head>
+        {% partial 'meta' %}
+    </head>
+    <body>
+
+        <!-- Top -->
+        <div id="top-nav">
+            <div class="container">
+                <!-- Put anything here, social links? -->
+            </div>
+        </div>
+
+        <!-- Header -->
+        <header id="layout-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="logo">
+                            <img src="{{ 'assets/images/logo.png'|theme }}" alt="House of Chairs" />
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="contact-phone">
+                            <label>Call us now</label>
+                            <span class="phone-number">KL5-3226</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Nav -->
+            <nav id="layout-nav">
+                <div class="container">
+                    {% if mainMenu.menuItems %}
+                        <ul class="nav nav-tabs pull-right">
+                            {% partial "mainMenu::items" items=mainMenu.menuItems %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </nav>
+        </header>
+
+        <!-- Content -->
+        <section id="layout-content">
+            <div class="container">
+
+                <div class="visible-xs visible-sm">
+                    <img src="{{ 'assets/images/chairs/sofa.jpg'|theme }}" alt="" title="" class="img-responsive" />
+                </div>
+                <div id="slider-wrapper" class="hidden-xs hidden-sm">
+                    <div id="slider">
+                        <img src="{{ 'assets/images/chairs/sofa.jpg'|theme }}" alt="" title="" />
+                        <img src="{{ 'assets/images/chairs/cafe.jpg'|theme }}" alt="" title="" />
+                        <img src="{{ 'assets/images/chairs/in-field.jpg'|theme }}" alt="" title="" />
+                        <img src="{{ 'assets/images/chairs/wheelchair.jpg'|theme }}" alt="" title="" />
+                        <img src="{{ 'assets/images/chairs/chairs.jpg'|theme }}" alt="" title="" />
+                    </div>
+                    <div id="slider-menu">
+                        <ul>
+                            <li><a href="/chairs/deck-chairs"><span>Deck chairs</span></a></li>
+                            <li><a href="/chairs/high-chairs"><span>High chairs</span></a></li>
+                            <li><a href="/chairs/rocking-chairs"><span>Rocking chairs</span></a></li>
+                            <li><a href="/chairs/softs"><span>Sofa</span></a></li>
+                            <li><a href="/chairs/wheelchairs"><span>Wheelchairs</span></a></li>
+                            <li class="desc"><h2><span class="left"></span><span class="mid"></span><span class="right"></span></h2></li>
+                        </ul>
+                    </div>
+                    <div id="slider-text">
+                        <h2>Great in the sun</h2>
+                        <h2>Keep your kids safe</h2>
+                        <h2>Old people love to rock themselves to sleep</h2>
+                        <h2>Have a cuddle on the sofa</h2>
+                        <h2>Roll away in style!</h2>
+                    </div>
+                    <div id="slider-more-info">
+                        See all of our chairs!
+                    </div>
+                </div>
+
+                <div class="row home-modules">
+                    <div class="col-sm-6 col-md-4">
+                        <div class="home-module">
+                            {% page %}
+{#                             <h3>About</h3>
+                            <p>You can relax with House of Chairs. We have been selling chairs for over 40 years.</p>
+                            <p>We are recognised for our quality and commitment to others when providing high quality chairs.</p>
+                            <p>We won't stuff you around and have respect for your rear end.</p>
+                            <p><a href="#">Learn more our kindness</a> #}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-md-4">
+                        <div class="home-module">
+                            {% placeholder news title="Latest News" %}
+{#                             <h3>Latest news</h3>
+                            <p><a href="#">View all news and announcements</a></p> #}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-md-4">
+                        <div class="home-module">
+                            {# <h3>Customer Sign in</h3> #}
+                            {% placeholder login title="Client Area" %}
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Slogan -->
+        <div id="layout-slogan">
+            <div class="container">
+                <div class="service-strip"></div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer id="layout-footer">
+            {% partial "footer" %}
+        </footer>
+
+        <!-- Scripts -->
+        {% partial 'scripts' %}
+
+<script type="text/javascript">
+    var lbl;
+    jQuery(document).ready(function(){
+        lbl = jQuery('#slider-menu li.desc h2');
+        jQuery('#slider-text h2').each(function(index, element){ jQuery(element).addClass('slide-'+(index+1)); });
+        jQuery('#slider-menu li a').each(function(index, element){ jQuery(element).attr('rel',(index+1)); });
+        jQuery('#slider-menu li a').hover(function(){
+
+            var clicked = jQuery(this);
+            var relspot = clicked.attr('rel');
+            selectItem(relspot);
+
+        });
+        function selectItem(num)
+        {
+            var relpos = 22+(num*37)+1; 
+            lbl.animate({opacity:0.1}, {queue:false});
+            jQuery('#slider-menu li.desc').animate({top:relpos},{queue:false, complete:function(index, element){
+                jQuery('#slider-menu li.desc .mid').text(jQuery('#slider-text .slide-'+num).text());
+                lbl.animate({opacity:1}, {queue:false});
+
+            }});
+        }
+        selectItem(2);
+    });
+</script>
+<script type="text/javascript"> jQuery(window).load(function() { jQuery('#slider').nivoSlider({effect:'sliceDown',directionNav:false}); }); </script>
+
+
+    </body>
+</html>

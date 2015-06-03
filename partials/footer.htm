@@ -1,0 +1,15 @@
+[staticMenu footerMenu]
+code = "footer-menu"
+==
+<div class="container">
+
+    {% if footerMenu.menuItems %}
+        <ul class="nav nav-tabs pull-right">
+            {% partial "footerMenu::items" items=footerMenu.menuItems %}
+        </ul>
+    {% endif %}
+
+    <div class="credit text-right">
+        <p>&copy; Copyright 2013 - {{ "now"|date("Y") }} Your Company - Powered by <a href="http://octobercms" target="_blank">OctoberCMS</a></p>
+    </div>
+</div>

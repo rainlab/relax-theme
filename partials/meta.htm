@@ -1,0 +1,17 @@
+<meta charset="utf-8">
+<title>October CMS - {{ this.page.title }}</title>
+<meta name="description" content="{{ this.page.meta_description }}">
+<meta name="title" content="{{ this.page.meta_title }}">
+<meta name="author" content="October CMS">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="{{ 'assets/images/october.png'|theme }}" />
+{% styles %}
+
+{# Vendor #}
+<link href="{{ [
+    'assets/vendor/nivo/nivo-slider.css',
+    'assets/less/vendor.less',
+]|theme }}" rel="stylesheet" />
+
+{# Theme #}
+<link href="{{ ['assets/less/theme.less']|theme }}" rel="stylesheet" />

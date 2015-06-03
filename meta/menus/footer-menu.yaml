@@ -1,0 +1,7 @@
+name: 'Footer Menu'
+items:
+    -
+        title: Everything
+        type: all-static-pages
+        code: ''
+        replace: '1'

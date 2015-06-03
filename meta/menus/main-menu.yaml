@@ -1,0 +1,34 @@
+name: 'Main Menu'
+items:
+    -
+        title: Home
+        nesting: '0'
+        type: static-page
+        code: ''
+        reference: index
+        replace: '0'
+    -
+        title: About
+        nesting: '0'
+        type: static-page
+        code: ''
+        reference: about
+        replace: '0'
+    -
+        title: 'Our Chairs'
+        nesting: '1'
+        type: static-page
+        url: ''
+        code: ''
+        reference: chairs
+        cmsPage: ''
+        replace: '0'
+    -
+        title: Contact
+        nesting: ''
+        type: url
+        url: /
+        code: ''
+        reference: ''
+        cmsPage: ''
+        replace: ''

@@ -1,0 +1,9 @@
+static-pages:
+    index: {  }
+    about: {  }
+    chairs:
+        chairs-sofas: {  }
+        chairs-high-chairs: {  }
+        chairs-rocking-chairs: {  }
+        chairs-wheelchairs: {  }
+        chairs-deck-chairs: {  }

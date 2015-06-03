@@ -1,0 +1,41 @@
+description = "Shows the client area sign in form"
+
+[viewBag]
+staticPageSnippetCode = "login-module"
+staticPageSnippetName = "Sign in module"
+staticPageSnippetProperties[redirect|type] = "string"
+staticPageSnippetProperties[redirect|title] = "Redirection page"
+staticPageSnippetProperties[redirect|default] = "/clients"
+==
+{% if user %}
+    <p>You are logged in</p>
+    <p><a href="{{ 'clients/clients'|page }}">+ Access Client Area</a></p>
+{% else %}
+    <form
+        data-request="onSignin"
+        data-request-redirect="{{ 'clients/clients'|page }}"
+        name="loginform"
+        id="loginform"
+        method="post"
+        class="module-form">
+        <label>Login</label>
+        <input type="text" name="login" value="" class="text" />
+
+        <label>Password</label>
+        <input type="password" name="password" value="" class="text" />
+        <button type="submit" class="submit">Sign in</button>
+    </form>
+
+    <div class="row">
+        <div class="col-md-6">
+            <a href="{{ 'forgot-password'|page }}">
+                Forgot password?
+            </a>
+        </div>
+        <div class="col-md-6 text-right">
+            <a href="{{ 'account'|page }}">
+                Sign up
+            </a>
+        </div>
+    </div>
+{% endif %}

@@ -1,0 +1,25 @@
+description = "Displays a small feed of latest news"
+
+[viewBag]
+staticPageSnippetCode = "news"
+staticPageSnippetName = "Latest News"
+
+[blogPosts]
+pageNumber = "{{ :page }}"
+postsPerPage = "10"
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "blog/category"
+postPage = "blog/post"
+==
+<div class="news-container">
+    {% for post in blogPosts.posts.take(5) %}
+        <div class="module-news">
+            <div class="calendar"><span class="month">{{ post.published_at|date('M') }}</span><span class="day">{{ post.published_at|date('d') }}</span></div>
+            <div class="news">
+                <a href="{{ 'clients/posts'|page }}">{{ post.title }}</a>.
+                <p>{{ post.excerpt }}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>

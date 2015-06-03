@@ -1,0 +1,9 @@
+name: Relax
+description: A sample theme that demonstrates how to build a client-friendly website.
+author: OctoberCMS
+homepage: 'http://octobercms.com'
+code: Relax
+require:
+    - RainLab.User
+    - RainLab.Blog
+    - RainLab.Pages

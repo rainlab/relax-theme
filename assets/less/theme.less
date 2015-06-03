@@ -1,0 +1,300 @@
+//
+// Boot variables and mixins
+//
+
+@import "theme/boot";
+
+//
+// Pages, Layouts and Controls
+//
+
+@import "pages/all";
+@import "layouts/all";
+@import "controls/all";
+
+body {
+    background: url('../images/body-bg.png') repeat-x;
+}
+
+#top-nav {
+    background: #000;
+    height: 35px;
+}
+
+#layout-header {
+    background: url('../images/header-bg.png') 50% 0 no-repeat;
+    min-height: 100px;
+
+    .logo {
+        position: relative;
+        top: 10px;
+    }
+
+    .contact-phone {
+        background: url('../images/header-phone.png') 0 50% no-repeat;
+        float: right;
+        margin: 15px 0 18px 0;
+        padding-top: 7px;
+        padding-left: 65px;
+        color: #FFF;
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-shadow: #000 1px 1px 1px;
+        .phone-number {
+            display: block;
+            position: relative;
+            top: -10px;
+        }
+    }
+}
+
+#layout-nav {
+    margin-top: -20px;
+
+    > .container {
+        padding-right: 0;
+    }
+    ul.nav {
+        border-bottom: none;
+
+        > li > a {
+            background: #fff;
+            position: relative;
+            top: 5px;
+            border: none;
+            border-top: 1px solid #fff;
+            padding: 8px 25px 14px;
+            margin-right: 0;
+            margin-left: 5px;
+            text-transform: uppercase;
+            color: #8e191c;
+            font-weight: 700;
+            z-index: 1;
+            .border-top-radius(5px);
+            .box-shadow(inset 0 20px 20px -20px rgba(0, 0, 0, .5));
+        }
+
+        > li:hover > a {
+            top: 2px;
+            z-index: 3;
+        }
+
+        > li.active > a {
+            top: 0;
+            padding-top: 11px;
+            padding-bottom: 11px;
+            z-index: 3;
+        }
+
+        // Sub menu
+        > li > ul {
+            display: none;
+            position: absolute;
+            top: 42px;
+            left: 5px;
+            z-index: 99;
+            width: 209px;
+            background: #fff;
+            .border-bottom-radius(5px);
+            .box-shadow(0 7px 7px 0 rgba(0, 0, 0, .35));
+            padding-bottom: 10px !important;
+
+            &, li { padding: 0; margin: 0; list-style: none; }
+
+            > li > a {
+                color: #8e191c;
+                font-weight: 500;
+                display: block;
+                padding: 5px 15px;
+                text-decoration: none;
+
+                &:hover {
+                    background: #fefefe url('../images/subnav-bg.png') 0 100% repeat-x;
+                }
+            }
+        }
+
+        > li:hover > ul {
+            display: block;
+        }
+    }
+}
+
+#layout-content {
+    min-height: 600px;
+    margin-bottom: 3px; // Accomodate the box shadow
+
+    > .container {
+        background: #FFF;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border-radius: 5px;
+        .box-shadow(0 0 7px 0 rgba(0, 0, 0, .35));
+        z-index: 2;
+        position: relative;
+    }
+}
+
+#layout-slogan {
+    .service-strip {
+        background: url('../images/footer-bg.png') 100% 0 no-repeat;
+        height: 65px;
+    }
+}
+
+#layout-footer {
+    background: #111;
+
+    .credit {
+        padding: 15px 0;
+        color: rgba(255,255,255,.35);
+    }
+}
+
+
+//
+// Modules
+//
+div.row.home-modules {
+    padding-left: 10px;
+    padding-right: 10px;
+    > div {
+        padding-top: 15px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+}
+
+.home-module {
+    background: url('../images/module-bg.png') #c7c7c7 0 0 repeat-x;
+    padding: 15px;
+    min-height: 280px;
+
+    h1,h2,h3,h4,h5 {
+        color: #8e191c;
+        border-bottom: 2px solid #9b9b9a;
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        line-height: normal;
+        padding-bottom: 5px;
+        margin-top: 0;
+        font-size: 18px;
+        text-transform: uppercase;
+    }
+}
+
+.news-container {
+    overflow: auto;
+    height: 160px;
+    padding-right: 5px;
+    border-bottom: 1px dotted #8c8c8c;
+    position: relative;
+}
+
+.module-news {
+
+    padding-bottom: 5px;
+    padding-top: 0px;
+    overflow: hidden;
+
+    .news {
+        margin-left: 60px;
+    }
+    .calendar {
+        float: left;
+        margin-top: 0px;
+        margin-left: -5px;
+        width: 56px;
+        height: 42px;
+        background: url('../images/calendar-bg.png') no-repeat;
+        position: relative;
+        margin-right: 3px;
+
+        .month, .calendar, .day {
+            text-align: center;
+            width: 56px;
+        }
+
+        .month {
+            display: block;
+            position: absolute;
+            top: 7px;
+            font-size: 12px;
+            color: #000;
+            font-weight: bold;
+        }
+        .day {
+            display: block;
+            position: absolute;
+            bottom: 4px;
+            font-size: 14px;
+        }
+    }
+
+}
+.module-form {
+    label {
+        display: block;
+        color: #4d4d4d;
+        text-transform: uppercase;
+        font-weight: 400;
+        margin-top: 5px;
+    }
+
+    input.text {
+        margin: 0px;
+        padding: 0px;
+        padding-left: 10px;
+        border: none;
+        background: url('../images/form-input.png') no-repeat;
+        width: 270px;
+        height: 38px;
+        line-height: 38px;
+    }
+
+    button.submit {
+        position: absolute;
+        margin: 0px;
+        padding: 0px;
+        margin-left: -40px;
+        border: none;
+        background: url('../images/form-submit.png') no-repeat;
+        width: 40px;
+        height: 38px;
+        text-indent: -999px;
+        overflow: hidden;
+        line-height: 0px;
+    }
+}
+
+// Account area
+.account-area {
+    padding: 20px 20px 40px;
+    overflow: hidden;
+    label {
+        display:block;
+        font-weight:bold;
+        color:#333333;
+    }
+    input, textarea, select {
+        width:90%;
+        margin-bottom:10px;
+    }
+    button {
+        padding:3px;
+        padding-left:7px;
+        padding-right:7px;
+        background-color:#f0f0f0;
+        border:1px solid #9b9b9a;
+        color:#8e191c;
+        font-weight:bold;
+    }
+}
+
+.account-jumbotron {
+    padding: 200px 20px;
+    p { font-size: 16px; }
+    &.text-center { text-align: center }
+}

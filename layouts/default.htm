@@ -1,0 +1,78 @@
+description = "Default layout"
+
+[session]
+security = "all"
+redirect = "home"
+
+[staticMenu mainMenu]
+code = "main-menu"
+
+[staticPage]
+==
+<!DOCTYPE html>
+<html>
+    <head>
+        {% partial 'meta' %}
+    </head>
+    <body>
+
+        <!-- Top -->
+        <div id="top-nav">
+            <div class="container">
+                <!-- Put anything here, social links? -->
+            </div>
+        </div>
+
+        <!-- Header -->
+        <header id="layout-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="logo">
+                            <img src="{{ 'assets/images/logo.png'|theme }}" alt="House of Chairs" />
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="contact-phone">
+                            <label>Call us now</label>
+                            <span class="phone-number">KL5-3226</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Nav -->
+            <nav id="layout-nav">
+                <div class="container">
+                    {% if mainMenu.menuItems %}
+                        <ul class="nav nav-tabs pull-right">
+                            {% partial "mainMenu::items" items=mainMenu.menuItems %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </nav>
+        </header>
+
+        <!-- Content -->
+        <section id="layout-content">
+            <div class="container">
+                {% page %}
+            </div>
+        </section>
+
+        <!-- Slogan -->
+        <div id="layout-slogan">
+            <div class="container">
+                <div class="service-strip"></div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer id="layout-footer">
+            {% partial "footer" %}
+        </footer>
+
+        <!-- Scripts -->
+        {% partial 'scripts' %}
+
+    </body>
+</html>
