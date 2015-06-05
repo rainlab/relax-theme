@@ -1,11 +1,11 @@
 description = "Shows the client area sign in form"
 
 [viewBag]
-staticPageSnippetCode = "login-module"
-staticPageSnippetName = "Sign in module"
-staticPageSnippetProperties[redirect|type] = "string"
-staticPageSnippetProperties[redirect|title] = "Redirection page"
-staticPageSnippetProperties[redirect|default] = "/clients"
+snippetCode = "login-module"
+snippetName = "Sign in module"
+snippetProperties[redirect|type] = "string"
+snippetProperties[redirect|title] = "Redirection page"
+snippetProperties[redirect|default] = "/clients"
 ==
 {% if user %}
     <p>You are logged in</p>

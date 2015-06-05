@@ -8,14 +8,12 @@ code = "main-menu"
 [staticPage]
 ==
 <?
-use RainLab\Pages\Classes\PageList;
 use RainLab\Pages\Classes\Page;
+
 function onStart()
 {
-    // @todo Need a way to list all sub pages
-    $pageList = new PageList($this->getTheme());
     $page = Page::find('chairs');
-    $result= $pageList->getPageSubTree($page);
+    $this['chairsPages'] = $page->getChildren();
 }
 ?>
 ==
@@ -65,12 +63,17 @@ function onStart()
         <!-- Content -->
         <section id="layout-content">
             <div class="container">
-
                 <div class="visible-xs visible-sm">
                     <img src="{{ 'assets/images/chairs/sofa.jpg'|theme }}" alt="" title="" class="img-responsive" />
                 </div>
                 <div id="slider-wrapper" class="hidden-xs hidden-sm">
                     <div id="slider">
+
+                        {# {% for chairPage in chairsPages %}
+                            {{ chairPage.url }}
+                            <img src="{{ 'assets/images/chairs/sofa.jpg'|theme }}" alt="" title="" />
+                        {% endfor %} #}
+
                         <img src="{{ 'assets/images/chairs/sofa.jpg'|theme }}" alt="" title="" />
                         <img src="{{ 'assets/images/chairs/cafe.jpg'|theme }}" alt="" title="" />
                         <img src="{{ 'assets/images/chairs/in-field.jpg'|theme }}" alt="" title="" />
