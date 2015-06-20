@@ -33,78 +33,65 @@ function onStart()
 
         <!-- Header -->
         <header id="layout-header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="logo">
-                            <img src="{{ 'assets/images/logo.png'|theme }}" alt="House of Chairs" />
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="contact-phone">
-                            <label>Call us now</label>
-                            <span class="phone-number">KL5-3226</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% partial "header" %}
+
             <!-- Nav -->
             <nav id="layout-nav">
-                <div class="container">
-                    {% if mainMenu.menuItems %}
-                        <ul class="nav nav-tabs pull-right">
-                            {% partial "mainMenu::items" items=mainMenu.menuItems %}
-                        </ul>
-                    {% endif %}
-                </div>
+                {% partial "nav" %}
             </nav>
         </header>
 
         <!-- Content -->
         <section id="layout-content">
             <div class="container">
-                <div class="visible-xs visible-sm">
-                    <img src="{{ 'assets/images/chairs/sofa.jpg'|theme }}" alt="" title="" class="img-responsive" />
+
+                <div class="visible-xs visible-sm slider-wrapper title-style">
+                    {% partial "title" %}
                 </div>
-                <div id="slider-wrapper" class="hidden-xs hidden-sm">
+
+                <div id="slider-wrapper" class="slider-wrapper hidden-xs hidden-sm">
                     <div id="slider">
+                        {% for chairPage in chairsPages %}
+                            {# {% set randomImage = random(['sofa', 'cafe', 'in-field', 'wheelchair', 'chairs']) %} #}
+                            {% set randomImage = ['highchair', 'sofa', 'cafe', 'in-field', 'wheelchair', 'chairs', 'lake', 'rocking-chairs'] %}
+                            {% set bannerImage = chairPage.viewBag.banner 
+                                ? chairPage.viewBag.banner|media
+                                : ('assets/images/chairs/'~random(randomImage)~'.jpg')|theme %}
 
-                        {# {% for chairPage in chairsPages %}
-                            {{ chairPage.url }}
-                            <img src="{{ 'assets/images/chairs/sofa.jpg'|theme }}" alt="" title="" />
-                        {% endfor %} #}
-
-                        <img src="{{ 'assets/images/chairs/sofa.jpg'|theme }}" alt="" title="" />
-                        <img src="{{ 'assets/images/chairs/cafe.jpg'|theme }}" alt="" title="" />
-                        <img src="{{ 'assets/images/chairs/in-field.jpg'|theme }}" alt="" title="" />
-                        <img src="{{ 'assets/images/chairs/wheelchair.jpg'|theme }}" alt="" title="" />
-                        <img src="{{ 'assets/images/chairs/chairs.jpg'|theme }}" alt="" title="" />
+                            <img src="{{ bannerImage }}" alt="" title="" />
+                        {% endfor %}
                     </div>
-                    <div id="slider-menu">
+                    <div id="slider-menu" class="slider-menu">
                         <ul>
-                            <li><a href="/chairs/deck-chairs"><span>Deck chairs</span></a></li>
+                            {% for chairPage in chairsPages %}
+                                <li><a href="{{ chairPage.url|app }}"><span>{{ chairPage.title }}</span></a></li>
+                            {% endfor %}
+                            {# <li><a href="/chairs/deck-chairs"><span>Deck chairs</span></a></li>
                             <li><a href="/chairs/high-chairs"><span>High chairs</span></a></li>
                             <li><a href="/chairs/rocking-chairs"><span>Rocking chairs</span></a></li>
                             <li><a href="/chairs/softs"><span>Sofa</span></a></li>
-                            <li><a href="/chairs/wheelchairs"><span>Wheelchairs</span></a></li>
-                            <li class="desc"><h2><span class="left"></span><span class="mid"></span><span class="right"></span></h2></li>
+                            <li><a href="/chairs/wheelchairs"><span>Wheelchairs</span></a></li> #}
+                            <li class="desc"><h2><span></span></h2></li>
                         </ul>
                     </div>
-                    <div id="slider-text">
-                        <h2>Great in the sun</h2>
+                    <div id="slider-text" class="slider-text">
+                        {% for chairPage in chairsPages %}
+                            <h2>{{ chairPage.viewBag.tagline }}</h2>
+                        {% endfor %}
+                        {# <h2>Great in the sun</h2>
                         <h2>Keep your kids safe</h2>
                         <h2>Old people love to rock themselves to sleep</h2>
                         <h2>Have a cuddle on the sofa</h2>
-                        <h2>Roll away in style!</h2>
+                        <h2>Roll away in style!</h2> #}
                     </div>
-                    <div id="slider-more-info">
+                    <div class="slider-more-info">
                         See all of our chairs!
                     </div>
                 </div>
 
-                <div class="row home-modules">
+                <div class="row module-homes">
                     <div class="col-sm-6 col-md-4">
-                        <div class="home-module">
+                        <div class="module-home">
                             {% page %}
 {#                             <h3>About</h3>
                             <p>You can relax with House of Chairs. We have been selling chairs for over 40 years.</p>
@@ -115,7 +102,7 @@ function onStart()
                     </div>
 
                     <div class="col-sm-6 col-md-4">
-                        <div class="home-module">
+                        <div class="module-home">
                             {% placeholder news title="Latest News" %}
 {#                             <h3>Latest news</h3>
                             <p><a href="#">View all news and announcements</a></p> #}
@@ -123,7 +110,7 @@ function onStart()
                     </div>
 
                     <div class="col-sm-6 col-md-4">
-                        <div class="home-module">
+                        <div class="module-home">
                             {# <h3>Customer Sign in</h3> #}
                             {% placeholder login title="Client Area" %}
                         </div>
@@ -167,7 +154,7 @@ function onStart()
             var relpos = 22+(num*37)+1; 
             lbl.animate({opacity:0.1}, {queue:false});
             jQuery('#slider-menu li.desc').animate({top:relpos},{queue:false, complete:function(index, element){
-                jQuery('#slider-menu li.desc .mid').text(jQuery('#slider-text .slide-'+num).text());
+                jQuery('#slider-menu li.desc h2 > span').text(jQuery('#slider-text .slide-'+num).text());
                 lbl.animate({opacity:1}, {queue:false});
 
             }});

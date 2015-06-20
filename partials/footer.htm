@@ -3,13 +3,73 @@ code = "footer-menu"
 ==
 <div class="container">
 
-    {% if footerMenu.menuItems %}
-        <ul class="nav nav-tabs pull-right">
-            {% partial "footerMenu::items" items=footerMenu.menuItems %}
-        </ul>
-    {% endif %}
+    <div class="row" id="footerSliceMenu">
+        {% if footerMenu.menuItems %}
+            <ul class="menu-links">
+                {% for item in footerMenu.menuItems %}
+                    <li class="head-link {{ item.isActive ? 'active' : '' }}">
+                        <a href="{{ item.url }}">{{ item.title }}</a>
+                    </li>
+                    {% if item.items %}
+                        {% for childItem in item.items %}
+                            <li class="{{ childItem.isActive ? 'active' : '' }}">
+                                <a href="{{ childItem.url }}">{{ childItem.title }}</a>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <div class="col-md-3">
+            <ul class="menu-slice"></ul>
+        </div>
+        <div class="col-md-3">
+            <ul class="menu-slice"></ul>
+        </div>
+        <div class="col-md-3">
+            <ul class="menu-slice"></ul>
+        </div>
+        <div class="col-md-3">
+            <div class="contact-details">
+                <ul>
+                    <li class="head-link">
+                        <a href="{{ 'contact'|page }}">Contact</a>
+                    </li>
+                </ul>
+                {% content 'contact/details' %}
+            </div>
+        </div>
+    </div>
 
     <div class="credit text-right">
-        <p>&copy; Copyright 2013 - {{ "now"|date("Y") }} Your Company - Powered by <a href="http://octobercms" target="_blank">OctoberCMS</a></p>
+        <p>&copy; Copyright {{ "now"|date("Y") }} Your Company - Powered by <i class="icon-leaf"></i> <a href="http://octobercms" target="_blank">OctoberCMS</a></p>
     </div>
 </div>
+
+{# This script splits the footer menu in to 3 columns #}
+{% put scripts %}
+<script>
+    jQuery(document).ready(function($){
+        var $container = $('#footerSliceMenu'),
+            $links = $('.menu-links li', $container),
+            $slices = $('.menu-slice', $container),
+            totalLinks = $links.length,
+            totalSlices = $slices.length,
+            perSlice = Math.round(totalLinks / totalSlices),
+            activeSlice = 1,
+            count = 0
+
+            $.each($links, function(){
+                $(this).appendTo($slices.eq(activeSlice - 1))
+
+                if (++count == perSlice) {
+                    count = 0
+                    activeSlice++
+                }
+            })
+
+            $('.menu-links', $container).remove()
+    })
+</script>
+{% endput %}

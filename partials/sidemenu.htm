@@ -1,0 +1,19 @@
+{# Renders a menu with any child static pages #}
+
+{% set parentOrSelf = page.parent ?: page %}
+{% set childPages = parentOrSelf.children %}
+
+<ul>
+    <li class="head-link {{ page.url == parentOrSelf.url ? 'active' }}">
+        <a href="{{ parentOrSelf.url|app }}">
+            {{ parentOrSelf.title }}
+        </a>
+    </li>
+    {% for childPage in childPages if not childPage.navigation_hidden %}
+        <li class="{{ page.url == childPage.url ? 'active' }}">
+            <a href="{{ childPage.url|app }}">
+                {{ childPage.title }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,76 @@
+{% if success %}
+
+    <div class="jumbotron contact-sent">
+        {% content 'contact/success' %}
+    </div>
+
+{% else %}
+
+    <h2>Contact Form</h2>
+
+    {{ form_ajax('onSubmit', {
+        class: 'contact-form',
+        update: { 'contact/form': '#partialContactForm' }
+    }) }}
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label">
+                        First name <span class="required">*</span>
+                    </label>
+                    <input type="text" name="name" class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label">
+                        Last name
+                    </label>
+                    <input type="text" name="surname" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label">
+                        Phone <span class="required">*</span>
+                    </label>
+                    <input type="text" name="phone" class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label">
+                        Company
+                    </label>
+                    <input type="text" name="company" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">
+                Email <span class="required">*</span>
+            </label>
+            <input type="text" name="email" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">
+                Message <span class="required">*</span>
+            </label>
+            <textarea rows="7" cols="10" name="comments" class="form-control"></textarea>
+        </div>
+
+        <div class="pull-right">
+            <button type="submit" class="submit-button btn btn-default btn-lg">
+                Send message!
+            </button>
+        </div>
+
+    {{ form_close() }}
+
+{% endif %}

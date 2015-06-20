@@ -13,7 +13,7 @@
 @import "controls/all";
 
 body {
-    background: url('../images/body-bg.png') repeat-x;
+    background: url('../images/body-bg.png') 0 0 repeat-x;
 }
 
 #top-nav {
@@ -24,6 +24,7 @@ body {
 #layout-header {
     background: url('../images/header-bg.png') 50% 0 no-repeat;
     min-height: 100px;
+    padding-bottom: 175px;
 
     .logo {
         position: relative;
@@ -122,8 +123,9 @@ body {
 }
 
 #layout-content {
+    margin-top: -175px;
     min-height: 600px;
-    margin-bottom: 3px; // Accomodate the box shadow
+    padding-bottom: 3px; // Accomodate the box shadow
 
     > .container {
         background: #FFF;
@@ -134,9 +136,42 @@ body {
         z-index: 2;
         position: relative;
     }
+
+    .content-area {
+        &.with-padding {
+            padding: 25px 15px 0 15px;
+        }
+
+        h1, h2, h3 {
+            color: #8e191c;
+            border-bottom: 2px solid #9b9b9a;
+            padding-bottom: 4px;
+            margin-top: 0;
+        }
+        h4, h5 {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        h6 {
+            text-transform: uppercase;
+            font-weight: bold;
+            color: rgba(0,0,0,.7);
+        }
+
+        ul {
+            padding: 0 0 0 20px;
+            margin: 0;
+            li {
+                margin: 0 0 10px 0;
+                padding: 0;
+                list-style-type: square;
+            }
+        }
+    }
 }
 
 #layout-slogan {
+    background: #FFF;
     .service-strip {
         background: url('../images/footer-bg.png') 100% 0 no-repeat;
         height: 65px;
@@ -145,10 +180,77 @@ body {
 
 #layout-footer {
     background: #111;
+    color: #fff;
+    padding-top: 20px;
+
+    a {
+        color: #fff;
+        text-decoration: none;
+        &:hover { opacity: .5; }
+    }
 
     .credit {
-        padding: 15px 0;
+        padding: 20px 0;
         color: rgba(255,255,255,.35);
+        p { margin: 10px 0; }
+    }
+
+    ul {
+        &, li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        li {
+            border-bottom: 1px dotted #555555;
+
+            a, span {
+                padding: 5px 0;
+                display: block;
+            }
+        }
+
+        li.head-link {
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-top: 15px;
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+    }
+
+    div.contact-details {
+        ul li {
+            padding: 5px 0;
+            strong {
+                font-weight: normal;
+            }
+        }
+    }
+}
+
+.contact-form {
+    label {
+        font-weight: normal;
+        span.required {
+            color: #990000;
+        }
+    }
+
+    .form-group.has-error {
+        label { font-weight: bold; }
+    }
+
+    .submit-button {
+        color: #8e191c;
+        background-color: rgba(0,0,0,.015);
+
+        &:hover {
+            color: #fff;
+            background-color: #8e191c;
+        }
     }
 }
 
@@ -156,7 +258,8 @@ body {
 //
 // Modules
 //
-div.row.home-modules {
+
+div.row.module-homes {
     padding-left: 10px;
     padding-right: 10px;
     > div {
@@ -166,12 +269,12 @@ div.row.home-modules {
     }
 }
 
-.home-module {
+.module-home {
     background: url('../images/module-bg.png') #c7c7c7 0 0 repeat-x;
     padding: 15px;
     min-height: 280px;
 
-    h1,h2,h3,h4,h5 {
+    h1, h2, h3, h4, h5 {
         color: #8e191c;
         border-bottom: 2px solid #9b9b9a;
         display: block;
@@ -194,7 +297,6 @@ div.row.home-modules {
 }
 
 .module-news {
-
     padding-bottom: 5px;
     padding-top: 0px;
     overflow: hidden;
@@ -266,6 +368,62 @@ div.row.home-modules {
         text-indent: -999px;
         overflow: hidden;
         line-height: 0px;
+    }
+}
+
+.module-sidemenu {
+    padding-bottom: 20px;
+    ul {
+        &, li {
+            margin: 0 !important;
+            padding: 0 !important;
+            list-style-type: none !important;
+        }
+
+        li {
+            border-bottom: 1px dotted #ccc;
+            a {
+                text-decoration: none;
+            }
+            a, span {
+                padding: 5px 0;
+                display: block;
+                color: #555;
+            }
+
+            &:hover {
+                border-bottom-color: #999;
+            }
+
+            &:hover,
+            &.active {
+                a, span {
+                    color: #222;
+                }
+            }
+        }
+
+        li.head-link {
+            text-transform: uppercase;
+            font-weight: bold;
+            a, span {
+                color: #8e191c;
+            }
+        }
+    }
+}
+
+.module-contact {
+    ul {
+        &, li {
+            list-style-type: none !important;
+            padding-left: 0 !important;
+        }
+        color: #666;
+        strong {
+            font-weight: normal;
+            color: #000;
+        }
     }
 }
 

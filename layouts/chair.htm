@@ -1,4 +1,4 @@
-description = "Default layout"
+description = "Chair layout"
 
 [session]
 security = "all"
@@ -43,23 +43,15 @@ code = "main-menu"
                     {% partial "title" %}
                 </div>
 
-                {% set hasChildren = (staticPage.parent ?: staticPage.page).children %}
-
                 <div class="content-area with-padding">
-                    {% if hasChildren %}
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="module-sidemenu">
-                                    {% partial 'sidemenu' page=staticPage.page %}
-                                </div>
-                            </div>
-                            <div class="col-md-9">
-                                {% page %}
-                            </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            {% page %}
                         </div>
-                    {% else %}
-                        {% page %}
-                    {% endif %}
+                        <div class="col-md-4">
+                            {% placeholder sidebarSection title="Sidebar" %}
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

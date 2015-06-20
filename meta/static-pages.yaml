@@ -1,6 +1,8 @@
 static-pages:
     index: {  }
-    about: {  }
+    about:
+        about-team: {  }
+        about-facilities: {  }
     chairs:
         chairs-sofas: {  }
         chairs-high-chairs: {  }

@@ -1,0 +1,23 @@
+{% macro render_menu(items) %}
+    {% import _self as nav %}
+
+    {% for item in items %}
+        <li role="presentation" class="{{ item.isActive ? 'active' : '' }} {{ item.isChildActive ? 'child-active' : '' }}">
+            <a href="{{ item.url }}">{{ item.title }}</a>
+
+            {% if item.items %}
+                <ul>{{ nav.render_menu(item.items) }}</ul>
+            {% endif %}
+        </li>
+    {% endfor %}
+{% endmacro %}
+
+{% import _self as nav %}
+
+<div class="container">
+    {% if mainMenu.menuItems %}
+        <ul class="nav nav-tabs pull-right">
+            {{ nav.render_menu(mainMenu.menuItems) }}
+        </ul>
+    {% endif %}
+</div>

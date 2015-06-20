@@ -4,15 +4,19 @@ items:
         title: Home
         nesting: '0'
         type: static-page
+        url: ''
         code: ''
         reference: index
+        cmsPage: ''
         replace: '0'
     -
         title: About
         nesting: '0'
         type: static-page
+        url: ''
         code: ''
         reference: about
+        cmsPage: ''
         replace: '0'
     -
         title: 'Our Chairs'
@@ -25,10 +29,6 @@ items:
         replace: '0'
     -
         title: Contact
-        nesting: ''
-        type: url
-        url: /
+        type: cms-page
         code: ''
-        reference: ''
-        cmsPage: ''
-        replace: ''
+        reference: contact

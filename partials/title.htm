@@ -1,0 +1,22 @@
+{% if not bannerImage %}
+    {% set randomImage = ['highchair', 'sofa', 'cafe', 'in-field', 'wheelchair', 'chairs', 'lake', 'rocking-chairs'] %}
+    {% set bannerImage = banner ? banner|media : ('assets/images/chairs/'~random(randomImage)~'.jpg')|theme %}
+{% endif %}
+
+<div class="title-image">
+    <img src="{{ bannerImage }}" alt="" title="" class="img-responsive" />
+</div>
+<div class="title-heading">
+    <div class="title">
+        <h1>
+            <span>{{ this.page.title }}</span>
+        </h1>
+    </div>
+    <div class="desc">
+        <h2>
+            <span>
+                {{ tagline }}
+            </span>
+        </h2>
+    </div>
+</div>

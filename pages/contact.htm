@@ -1,0 +1,51 @@
+title = "Contact"
+url = "/contact"
+layout = "default"
+description = "Contact page"
+is_hidden = "0"
+meta_title = "Get in touch with House of Chairs"
+==
+<?
+function onStart()
+{
+    $this['tagline'] = $this->page->meta_title;
+    $this['bannerImage'] = $this->themeUrl('assets/images/contact-us-banner.jpg');
+}
+
+function onSubmit()
+{
+    $rules = [
+        'name'     => 'required|min:2|max:64',
+        'phone'    => 'required',
+        'email'    => 'required|email|min:2|max:64',
+        'comments' => 'required|min:5',
+    ];
+
+    $validation = Validator::make(post(), $rules);
+    if ($validation->fails()) {
+        throw new ValidationException($validation);
+    }
+
+    // Mail::send('contact::form', post(), function($message) {
+    //     $message->to('admin@email.tld', 'House of Chairs');
+    //     $message->replyTo(post('email'), post('name'));
+    // });
+
+    $this['success'] = true;
+}
+?>
+==
+<div class="row">
+    <div class="col-md-4">
+        {% content 'contact/page' %}
+
+        <div class="module-contact well">
+            {% content 'contact/details' %}
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div id="partialContactForm">
+            {% partial 'contact/form' %}
+        </div>
+    </div>
+</div>
