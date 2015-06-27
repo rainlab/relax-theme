@@ -1,0 +1,9 @@
+{% if staticBreadcrumbs.breadcrumbs %}
+    <ol class="breadcrumb">
+        {% for breadcrumb in staticBreadcrumbs.breadcrumbs %}
+            <li class="{{ breadcrumb.isActive ? 'active' : '' }}">
+                <a href="{{ breadcrumb.url }}">{{ breadcrumb.title }}</a>
+            </li>
+        {% endfor %}
+    </ol>
+{% endif %}

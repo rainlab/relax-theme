@@ -56,7 +56,7 @@ code = "footer-menu"
             $slices = $('.menu-slice', $container),
             totalLinks = $links.length,
             totalSlices = $slices.length,
-            perSlice = Math.round(totalLinks / totalSlices),
+            perSlice = Math.ceil(totalLinks / totalSlices),
             activeSlice = 1,
             count = 0
 
