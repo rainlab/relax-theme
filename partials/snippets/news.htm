@@ -24,5 +24,7 @@ postPage = "blog/post"
                 <p>{{ post.excerpt }}</p>
             </div>
         </div>
+    {% else %}
+        <p>There are no posts to display. You know what they say, no news is good news!</p>
     {% endfor %}
 </div>
