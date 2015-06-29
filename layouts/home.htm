@@ -1,5 +1,6 @@
 description = "Default layout"
 
+[account]
 [session]
 
 [staticMenu mainMenu]
@@ -66,11 +67,6 @@ function onStart()
                             {% for chairPage in chairsPages %}
                                 <li><a href="{{ chairPage.url|app }}"><span>{{ chairPage.title }}</span></a></li>
                             {% endfor %}
-                            {# <li><a href="/chairs/deck-chairs"><span>Deck chairs</span></a></li>
-                            <li><a href="/chairs/high-chairs"><span>High chairs</span></a></li>
-                            <li><a href="/chairs/rocking-chairs"><span>Rocking chairs</span></a></li>
-                            <li><a href="/chairs/softs"><span>Sofa</span></a></li>
-                            <li><a href="/chairs/wheelchairs"><span>Wheelchairs</span></a></li> #}
                             <li class="desc"><h2><span></span></h2></li>
                         </ul>
                     </div>
@@ -78,11 +74,6 @@ function onStart()
                         {% for chairPage in chairsPages %}
                             <h2>{{ chairPage.viewBag.tagline }}</h2>
                         {% endfor %}
-                        {# <h2>Great in the sun</h2>
-                        <h2>Keep your kids safe</h2>
-                        <h2>Old people love to rock themselves to sleep</h2>
-                        <h2>Have a cuddle on the sofa</h2>
-                        <h2>Roll away in style!</h2> #}
                     </div>
                     <div class="slider-more-info">
                         See all of our chairs!
@@ -93,25 +84,17 @@ function onStart()
                     <div class="col-sm-6 col-md-4">
                         <div class="module-home">
                             {% page %}
-{#                             <h3>About</h3>
-                            <p>You can relax with House of Chairs. We have been selling chairs for over 40 years.</p>
-                            <p>We are recognised for our quality and commitment to others when providing high quality chairs.</p>
-                            <p>We won't stuff you around and have respect for your rear end.</p>
-                            <p><a href="#">Learn more our kindness</a> #}
                         </div>
                     </div>
 
                     <div class="col-sm-6 col-md-4">
                         <div class="module-home">
                             {% placeholder news title="Latest News" %}
-{#                             <h3>Latest news</h3>
-                            <p><a href="#">View all news and announcements</a></p> #}
                         </div>
                     </div>
 
                     <div class="col-sm-6 col-md-4">
                         <div class="module-home">
-                            {# <h3>Customer Sign in</h3> #}
                             {% placeholder login title="Client Area" %}
                         </div>
                     </div>
@@ -135,35 +118,7 @@ function onStart()
 
         <!-- Scripts -->
         {% partial 'scripts' %}
-
-<script type="text/javascript">
-    var lbl;
-    jQuery(document).ready(function(){
-        lbl = jQuery('#slider-menu li.desc h2');
-        jQuery('#slider-text h2').each(function(index, element){ jQuery(element).addClass('slide-'+(index+1)); });
-        jQuery('#slider-menu li a').each(function(index, element){ jQuery(element).attr('rel',(index+1)); });
-        jQuery('#slider-menu li a').hover(function(){
-
-            var clicked = jQuery(this);
-            var relspot = clicked.attr('rel');
-            selectItem(relspot);
-
-        });
-        function selectItem(num)
-        {
-            var relpos = 22+(num*37)+1; 
-            lbl.animate({opacity:0.1}, {queue:false});
-            jQuery('#slider-menu li.desc').animate({top:relpos},{queue:false, complete:function(index, element){
-                jQuery('#slider-menu li.desc h2 > span').text(jQuery('#slider-text .slide-'+num).text());
-                lbl.animate({opacity:1}, {queue:false});
-
-            }});
-        }
-        selectItem(2);
-    });
-</script>
-<script type="text/javascript"> jQuery(window).load(function() { jQuery('#slider').nivoSlider({effect:'sliceDown',directionNav:false}); }); </script>
-
+        <script src="{{ 'assets/javascript/home.js'|theme }}"></script>
 
     </body>
 </html>

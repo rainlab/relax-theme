@@ -1,0 +1,182 @@
+//
+// Modules
+//
+
+div.row.module-homes {
+    padding-left: 10px;
+    padding-right: 10px;
+    > div {
+        padding-top: 15px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+}
+
+.module-home {
+    background: url('../images/module-bg.png') #c7c7c7 0 0 repeat-x;
+    padding: 15px;
+    min-height: 260px;
+
+    h1, h2, h3, h4, h5 {
+        color: @brand-primary;
+        border-bottom: 2px solid #9b9b9a;
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        line-height: normal;
+        padding-bottom: 5px;
+        margin-top: 0;
+        font-size: 18px;
+        text-transform: uppercase;
+    }
+
+    p:last-of-type {
+        margin-bottom: 0;
+    }
+
+    a {
+        color: @brand-primary;
+    }
+}
+
+.news-container {
+    overflow: auto;
+    height: 160px;
+    padding-right: 5px;
+    border-bottom: 1px dotted #8c8c8c;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.module-news {
+    padding-bottom: 5px;
+    padding-top: 0px;
+    overflow: hidden;
+
+    .news {
+        margin-left: 60px;
+    }
+    .calendar {
+        float: left;
+        margin-top: 0px;
+        margin-left: -5px;
+        width: 56px;
+        height: 42px;
+        background: url('../images/calendar-bg.png') no-repeat;
+        position: relative;
+        margin-right: 3px;
+
+        .month, .calendar, .day {
+            text-align: center;
+            width: 56px;
+        }
+
+        .month {
+            display: block;
+            position: absolute;
+            top: 7px;
+            font-size: 12px;
+            color: #000;
+            font-weight: bold;
+        }
+        .day {
+            display: block;
+            position: absolute;
+            bottom: 4px;
+            font-size: 14px;
+        }
+    }
+
+}
+.module-form {
+    margin-bottom: 10px;
+
+    label {
+        display: block;
+        color: #4d4d4d;
+        text-transform: uppercase;
+        font-weight: 400;
+        margin-top: 5px;
+    }
+
+    input.text {
+        margin: 0px;
+        padding: 0px;
+        padding-left: 10px;
+        border: none;
+        background: url('../images/form-input.png') no-repeat;
+        width: 270px;
+        height: 38px;
+        line-height: 38px;
+    }
+
+    button.submit {
+        position: absolute;
+        margin: 0px;
+        padding: 0px;
+        margin-left: -40px;
+        border: none;
+        background: url('../images/form-submit.png') no-repeat;
+        width: 40px;
+        height: 38px;
+        text-indent: -999px;
+        overflow: hidden;
+        line-height: 0px;
+    }
+}
+
+.module-sidemenu {
+    padding-bottom: 20px;
+    ul {
+        &, li {
+            margin: 0 !important;
+            padding: 0 !important;
+            list-style-type: none !important;
+        }
+
+        li {
+            border-bottom: 1px dotted #ccc;
+            a {
+                text-decoration: none;
+            }
+            a, span {
+                padding: 5px 0;
+                display: block;
+                color: #555;
+            }
+
+            &:hover {
+                border-bottom-color: #999;
+            }
+
+            &:hover,
+            &.active {
+                a, span {
+                    color: #222;
+                }
+            }
+        }
+
+        li.head-link {
+            text-transform: uppercase;
+            font-weight: bold;
+            a, span {
+                color: @brand-primary;
+            }
+        }
+    }
+}
+
+.module-contact {
+    ul {
+        &, li {
+            list-style-type: none !important;
+            padding-left: 0 !important;
+        }
+        color: #666;
+        strong {
+            font-weight: normal;
+            color: #000;
+        }
+    }
+}

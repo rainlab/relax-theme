@@ -15,9 +15,12 @@ postPage = "blog/post"
 <div class="news-container">
     {% for post in blogPosts.posts.take(5) %}
         <div class="module-news">
-            <div class="calendar"><span class="month">{{ post.published_at|date('M') }}</span><span class="day">{{ post.published_at|date('d') }}</span></div>
+            <div class="calendar">
+                <span class="month">{{ post.published_at|date('M') }}</span>
+                <span class="day">{{ post.published_at|date('d') }}</span>
+            </div>
             <div class="news">
-                <a href="{{ 'clients/posts'|page }}">{{ post.title }}</a>.
+                <a href="{{ 'blog/post'|page({ slug: post.slug }) }}">{{ post.title }}</a>.
                 <p>{{ post.excerpt }}</p>
             </div>
         </div>

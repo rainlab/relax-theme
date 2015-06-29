@@ -9,3 +9,7 @@ static-pages:
         chairs-rocking-chairs: {  }
         chairs-wheelchairs: {  }
         chairs-deck-chairs: {  }
+    clients:
+        clients-announcements: {  }
+        clients-newsletters: {  }
+        clients-gallery: {  }

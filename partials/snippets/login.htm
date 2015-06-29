@@ -9,22 +9,23 @@ snippetProperties[redirect|default] = "/clients"
 ==
 {% if user %}
     <p>You are logged in</p>
-    <p><a href="{{ 'clients/clients'|page }}">+ Access Client Area</a></p>
+    <p>
+        <a href="{{ 'clients'|staticPage }}" class="btn btn-default">
+            Access Client Area
+        </a>
+    </p>
 {% else %}
-    <form
-        data-request="onSignin"
-        data-request-redirect="{{ 'clients/clients'|page }}"
-        name="loginform"
-        id="loginform"
-        method="post"
-        class="module-form">
+    {{ form_ajax('onSignin', {
+        redirect: 'clients'|staticPage,
+        class: 'module-form'
+    }) }}
         <label>Login</label>
         <input type="text" name="login" value="" class="text" />
 
         <label>Password</label>
         <input type="password" name="password" value="" class="text" />
         <button type="submit" class="submit">Sign in</button>
-    </form>
+    {{ form_close() }}
 
     <div class="row">
         <div class="col-md-6">

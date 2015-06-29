@@ -8,24 +8,29 @@ hidden = "0"
 slug = "{{ :slug }}"
 categoryPage = "blog/category"
 
-[forumEmbedTopic]
-embedCode = "{{ :slug }}"
-channelSlug = "channel-orange"
-memberPage = "404"
+[blogCategories]
+slug = "{{ :slug }}"
+displayEmpty = "0"
+categoryPage = "blog/category"
 ==
 <?php
 function onEnd()
 {
-    $this->page->title = $this->post->title;
+    $this['tagline'] = $this->post->title;
+    $this['bannerImage'] = $this->themeUrl('assets/images/blog-banner.jpg');
+
+    if ($this->post && $this->post->featured_images->count() > 0) {
+        $this['bannerImage'] = $this->post->featured_images->first()->getPath();
+    }
 }
 ?>
 ==
-{% component 'blogPost' %}
 
-<hr />
-<h4>Comments</h4>
-{% if user %}
-    {% component 'forumEmbedTopic' %}
-{% else %}
-    <p>Please <a href="{{ 'account'|page }}">sign in</a> to comment!</p>
-{% endif %}
+<div class="row">
+    <div class="col-md-8">
+        {% component 'blogPost' %}
+    </div>
+    <div class="col-md-4">
+        {% partial 'blog/categories' %}
+    </div>
+</div>

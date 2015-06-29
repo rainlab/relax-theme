@@ -1,12 +1,19 @@
 title = "Client area"
 url = "/account/:code?"
 layout = "default"
+meta_title = "Apply for access to our client area"
 
 [account]
-redirect = "clients/clients"
+redirect = "/clients"
 paramCode = "code"
 ==
-
+<?
+function onStart()
+{
+    $this['bannerImage'] = $this->themeUrl('assets/images/client-area-banner.jpg');
+}
+?>
+==
 <div class="account-area">
 
     {% if not user %}
@@ -22,7 +29,7 @@ paramCode = "code"
             <div class="row">
 
                 <div class="col-md-6">
-                    <h1>Sign in</h1>
+                    <h3>Sign in</h3>
                     <p>If you are already a client, sign in with you details here.</p>
                     <form
                         data-request="onSignin">
@@ -45,7 +52,7 @@ paramCode = "code"
                 </div>
 
                 <div class="col-md-6">
-                    <h1>Register</h1>
+                    <h3>Register</h3>
                     <p>You may apply to the client area by completing this form.</p>
                     <form
                         data-request="onRegister">
@@ -61,7 +68,7 @@ paramCode = "code"
                             <input name="email" type="email" class="form-control" id="accountEmail" placeholder="Enter your email">
                         </div>
 
-                        <h2>Account information</h2>
+                        <h3>Account information</h3>
 
                         <div class="form-group">
                             <label for="accountLogin">Login</label>
@@ -87,6 +94,8 @@ paramCode = "code"
 
         {{ form_ajax('onUpdate', { model: user }) }}
 
+            <h3>Account information</h3>
+
             <div class="form-group">
                 <label for="accountName">Full Name</label>
                 <input name="name" type="text" class="form-control" id="accountName" value="{{ form_value('name') }}">
@@ -98,43 +107,8 @@ paramCode = "code"
             </div>
 
             <div class="form-group">
-                <label for="accountCompany">Company</label>
-                <input name="company" type="text" class="form-control" id="accountCompany" placeholder="Enter your company or business name" value="{{ form_value('company') }}">
-            </div>
-
-            <div class="form-group">
-                <label for="accountPhone">Phone</label>
-                <input name="phone" type="text" class="form-control" id="accountPhone" placeholder="Enter your contact phone number" value="{{ form_value('phone') }}">
-            </div>
-
-            <div class="form-group">
-                <label for="accountAddress">Address</label>
-                <input name="street_addr" type="text" class="form-control" id="accountAddress" placeholder="Enter your street address" value="{{ form_value('address') }}">
-            </div>
-
-            <div class="form-group">
-                <label for="accountCity">City / Suburb</label>
-                <input name="city" type="text" class="form-control" id="accountCity" placeholder="Enter your city or suburb" value="{{ form_value('city') }}">
-            </div>
-            <div class="form-group">
-                <label for="accountZip">Postal code</label>
-                <input name="zip" type="text" class="form-control" id="accountZip" placeholder="Enter your post code" value="{{ form_value('zip') }}">
-            </div>
-
-            <div class="form-group">
-                <label for="accountCountry">Country</label>
-                {{ form_select_country('country_id', form_value('country_id'), { id: 'registerCountry', class: 'form-control', 'data-request': 'onInit', 'data-request-update': { 'country_state': '#partialRegisterState' }  }) }}
-            </div>
-
-            <div class="form-group" id="partialRegisterState">
-                {% partial 'country_state' selectedCountry=form_value('country_id') selectedValue=form_value('state_id') %}
-            </div>
-
-            <h2>Account information</h2>
-
-            <div class="form-group">
                 <label for="accountLogin">Login</label>
-                <input name="login" type="text" class="form-control" id="accountLogin" placeholder="Choose a login name to use" value="{{ form_value('login') }}">
+                <input name="username" type="text" class="form-control" id="accountLogin" placeholder="Choose a login name to use" value="{{ form_value('username') }}">
             </div>
 
             <div class="form-group">
@@ -153,7 +127,7 @@ paramCode = "code"
 
         <br/ >
         <p>
-            <a href="{{ 'clients/clients'|page }}">+ Return to client area</a>
+            <a href="{{ 'clients'|staticPage }}">+ Return to client area</a>
         </p>
 
     {% endif %}

@@ -1,3 +1,8 @@
+
+{# Custom navigation implementation that only shows 2 levels deep #}
+
+{% import _self as nav %}
+
 {% macro render_menu(items) %}
     {% import _self as nav %}
 
@@ -11,8 +16,6 @@
         </li>
     {% endfor %}
 {% endmacro %}
-
-{% import _self as nav %}
 
 <div class="container">
     {% if mainMenu.menuItems %}

@@ -3,6 +3,7 @@ url = "/blog/category/:slug"
 layout = "default"
 description = "Viewing blog posts in a specific category."
 hidden = "0"
+meta_title = "The latest announcements from us"
 
 [blogPosts]
 pageNumber = "{{ :page }}"
@@ -17,6 +18,13 @@ postPage = "blog/post"
 slug = "{{ :slug }}"
 displayEmpty = "0"
 categoryPage = "blog/category"
+==
+<?
+function onStart()
+{
+    $this['bannerImage'] = $this->themeUrl('assets/images/blog-banner.jpg');
+}
+?>
 ==
 <div class="row">
     <div class="col-md-8">

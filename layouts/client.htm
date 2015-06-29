@@ -1,0 +1,83 @@
+description = "Client area"
+
+[session]
+security = "user"
+redirect = "account"
+
+[staticMenu mainMenu]
+code = "main-menu"
+
+[staticMenu clientMenu]
+code = "client-menu"
+
+[staticPage]
+==
+<!DOCTYPE html>
+<html>
+    <head>
+        {% partial 'meta' %}
+    </head>
+    <body>
+        <!-- Top -->
+        <div id="top-nav">
+            <div class="container">
+                <!-- Put anything here, social links? -->
+            </div>
+        </div>
+
+        <!-- Header -->
+        <header id="layout-header">
+            {% partial "header" %}
+
+            <!-- Nav -->
+            <nav id="layout-nav">
+                {% partial "nav" %}
+            </nav>
+        </header>
+
+        <!-- Content -->
+        <section id="layout-content">
+            <div class="container">
+
+                <div class="slider-wrapper title-style">
+                    {% partial "title"
+                        bannerImage='assets/images/client-area-banner.jpg'|theme
+                        title='Client area'
+                        tagline=this.page.title
+                    %}
+                </div>
+
+                <div class="title-breadcrumb">
+                    {% partial 'breadcrumb' %}
+                </div>
+
+                <div class="content-area with-padding">
+                    <div class="row">
+                        <div class="col-md-8">
+                            {% page %}
+                        </div>
+                        <div class="col-md-4">
+                            {% partial 'client/nav' %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slogan -->
+        <div id="layout-slogan">
+            <div class="container">
+                <div class="service-strip"></div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer id="layout-footer">
+            {% partial "footer" %}
+        </footer>
+
+        <!-- Scripts -->
+        {% partial 'scripts' %}
+
+    </body>
+</html>

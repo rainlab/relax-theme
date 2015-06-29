@@ -1,9 +1,20 @@
-{% if staticBreadcrumbs.breadcrumbs %}
+
+{# Custom breadcrumb implementation that ignores the navigation_hidden flag #}
+
+{% import _self as nav %}
+
+{% macro render_crumb(page, isActive) %}
+    {% import _self as nav %}
+    {% if page.parent %}
+        {{ nav.render_crumb(page.parent, false) }}
+    {% endif %}
+    <li class="{{ isActive ? 'active' : '' }}">
+        <a href="{{ page.url|app }}">{{ page.title }}</a>
+    </li>
+{% endmacro %}
+
+{% if staticPage.parent %}
     <ol class="breadcrumb">
-        {% for breadcrumb in staticBreadcrumbs.breadcrumbs %}
-            <li class="{{ breadcrumb.isActive ? 'active' : '' }}">
-                <a href="{{ breadcrumb.url }}">{{ breadcrumb.title }}</a>
-            </li>
-        {% endfor %}
+        {{ nav.render_crumb(staticPage.page, true) }}
     </ol>
 {% endif %}

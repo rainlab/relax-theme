@@ -9,13 +9,13 @@
 <div class="title-heading">
     <div class="title">
         <h1>
-            <span>{{ this.page.title }}</span>
+            <span>{{ title ?: this.page.title }}</span>
         </h1>
     </div>
     <div class="desc">
         <h2>
             <span>
-                {{ tagline }}
+                {{ tagline ?: this.page.meta_title }}
             </span>
         </h2>
     </div>

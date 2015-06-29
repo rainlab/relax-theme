@@ -1,0 +1,9 @@
+name: 'Client Menu'
+items:
+    -
+        title: 'Client pages'
+        nesting: '1'
+        type: static-page
+        code: ''
+        reference: clients
+        replace: '1'

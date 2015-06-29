@@ -1,0 +1,19 @@
+<div class="module-sidemenu">
+    <ul>
+        <li class="head-link"><span>My Profile</span></li>
+        <li><a href="{{ 'account'|page }}">Change My Password</a></li>
+        <li><a href="javascript:;" data-request="onLogout">Log out</a></li>
+    </ul>
+</div>
+<div class="module-sidemenu">
+    <ul>
+        <li class="head-link">
+            <a href="{{ 'clients'|staticPage }}">Client area</a>
+        </li>
+        {% for item in clientMenu.menuItems %}
+            <li class="{{ item.isActive ? 'active' : '' }}">
+                <a href="{{ item.url }}">{{ item.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

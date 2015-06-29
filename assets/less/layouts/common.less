@@ -1,0 +1,219 @@
+
+body {
+    background: url('../images/body-bg.png') 0 0 repeat-x;
+}
+
+#top-nav {
+    background: #000;
+    height: 35px;
+}
+
+#layout-header {
+    background: url('../images/header-bg.png') 50% 0 no-repeat;
+    min-height: 100px;
+    padding-bottom: 175px;
+
+    .logo {
+        position: relative;
+        top: 10px;
+    }
+
+    .contact-phone {
+        background: url('../images/header-phone.png') 0 50% no-repeat;
+        float: right;
+        margin: 15px 0 18px 0;
+        padding-top: 7px;
+        padding-left: 65px;
+        color: #FFF;
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-shadow: #000 1px 1px 1px;
+        .phone-number {
+            display: block;
+            position: relative;
+            top: -10px;
+        }
+    }
+}
+
+#layout-nav {
+    margin-top: -20px;
+
+    > .container {
+        padding-right: 0;
+    }
+    ul.nav {
+        border-bottom: none;
+
+        > li > a {
+            background: #fff;
+            position: relative;
+            top: 5px;
+            border: none;
+            border-top: 1px solid #fff;
+            padding: 8px 25px 14px;
+            margin-right: 0;
+            margin-left: 5px;
+            text-transform: uppercase;
+            color: @brand-primary;
+            font-weight: 700;
+            z-index: 1;
+            .border-top-radius(5px);
+            .box-shadow(inset 0 20px 20px -20px rgba(0, 0, 0, .5));
+        }
+
+        > li:hover > a {
+            top: 2px;
+            z-index: 3;
+        }
+
+        > li.active > a {
+            top: 0;
+            padding-top: 11px;
+            padding-bottom: 11px;
+            z-index: 3;
+        }
+
+        // Sub menu
+        > li > ul {
+            display: none;
+            position: absolute;
+            top: 42px;
+            left: 5px;
+            z-index: 99;
+            width: 209px;
+            background: #fff;
+            .border-bottom-radius(5px);
+            .box-shadow(0 7px 7px 0 rgba(0, 0, 0, .35));
+            padding-bottom: 10px !important;
+
+            &, li { padding: 0; margin: 0; list-style: none; }
+
+            > li > a {
+                color: @brand-primary;
+                font-weight: 500;
+                display: block;
+                padding: 5px 15px;
+                text-decoration: none;
+
+                &:hover {
+                    background: #fefefe url('../images/subnav-bg.png') 0 100% repeat-x;
+                }
+            }
+        }
+
+        > li:hover > ul {
+            display: block;
+        }
+    }
+}
+
+#layout-content {
+    margin-top: -175px;
+    min-height: 600px;
+    padding-bottom: 3px; // Accomodate the box shadow
+
+    > .container {
+        background: #FFF;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border-radius: 5px;
+        .box-shadow(0 0 7px 0 rgba(0, 0, 0, .35));
+        z-index: 2;
+        position: relative;
+    }
+
+    .content-area {
+        &.with-padding {
+            padding: 25px 15px 0 15px;
+        }
+
+        h1, h2, h3 {
+            color: @brand-primary;
+            border-bottom: 2px solid #9b9b9a;
+            padding-bottom: 4px;
+            margin-top: 0;
+        }
+        h4, h5 {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        h6 {
+            text-transform: uppercase;
+            font-weight: bold;
+            color: rgba(0,0,0,.7);
+        }
+
+        ul {
+            padding: 0 0 0 20px;
+            margin: 0;
+            li {
+                margin: 0 0 10px 0;
+                padding: 0;
+                list-style-type: square;
+            }
+        }
+    }
+}
+
+#layout-slogan {
+    background: #FFF;
+    .service-strip {
+        background: url('../images/footer-bg.png') 100% 0 no-repeat;
+        height: 65px;
+    }
+}
+
+#layout-footer {
+    background: #111;
+    color: #fff;
+    padding-top: 20px;
+
+    a {
+        color: #fff;
+        text-decoration: none;
+        &:hover { opacity: .5; }
+    }
+
+    .credit {
+        padding: 20px 0;
+        color: rgba(255,255,255,.35);
+        p { margin: 10px 0; }
+    }
+
+    ul {
+        &, li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        li {
+            border-bottom: 1px dotted #555555;
+
+            a, span {
+                padding: 5px 0;
+                display: block;
+            }
+        }
+
+        li.head-link {
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-top: 15px;
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+    }
+
+    div.contact-details {
+        ul li {
+            padding: 5px 0;
+            strong {
+                font-weight: normal;
+            }
+        }
+    }
+}

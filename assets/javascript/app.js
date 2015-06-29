@@ -6,18 +6,14 @@
  * Implement nice invalid form fields
  */
 $(window).on('ajaxInvalidField', function(event, fieldElement, fieldName, errorMsg, isFirst) {
-    event.preventDefault()
-
     var $field = $(fieldElement).closest('.form-group'),
         $help = $('<p />').addClass('help-block')
 
     if (!$field.length) {
-        $field = fieldElement.closest('.field')
-    }
-
-    if (!$field.length) {
         return
     }
+
+    event.preventDefault()
 
     if (errorMsg) {
         $help.text(errorMsg.join(', '))
