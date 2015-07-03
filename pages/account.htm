@@ -19,7 +19,7 @@ function onStart()
     {% if not user %}
 
         {% if post('register') %}
-            <div class="account-jumbotron">
+            <div class="jumbotron">
                 <h2>Thanks for registering</h2>
                 <p>Your application has been received and you will get an email from us once you are approved to sign in.</p>
                 <p><a href="{{ 'home'|page }}">Return to the homepage</a>
@@ -45,8 +45,6 @@ function onStart()
 
                         <button type="submit" class="btn btn-default">Sign in</button>
                     </form>
-
-
                     <br />
                     <p><a href="{{ 'forgot-password'|page }}">Forgotten your password?</a></p>
                 </div>

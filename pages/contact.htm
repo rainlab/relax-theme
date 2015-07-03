@@ -25,10 +25,14 @@ function onSubmit()
         throw new ValidationException($validation);
     }
 
-    // Mail::send('contact::form', post(), function($message) {
-    //     $message->to('admin@email.tld', 'House of Chairs');
-    //     $message->replyTo(post('email'), post('name'));
-    // });
+    if (!$group = Backend\Models\UserGroup::whereCode('support-contact')->first()) {
+        throw new ApplicationException('Please create an admin group with code: support-contact');
+    }
+
+    $contacts = $group->users->lists('full_name', 'email');
+    Mail::sendTo($contacts, 'contact::form', post(), function($message) {
+        $message->replyTo(post('email'), post('name'));
+    });
 
     $this['success'] = true;
 }
