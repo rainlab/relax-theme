@@ -3,7 +3,13 @@ Relax Theme
 
 ![Screenshot](https://raw.githubusercontent.com/rainlab/relax-theme/master/assets/images/theme-preview.png)
 
+!![560x315](https://player.vimeo.com/video/132426322)
+
 A sample client website that contains preconfigured pages for static pages, a blog and client area.
+
+* [View the screencast presentation](https://vimeo.com/132426322)
+
+> **Note**: The contact form requires some system configuration to work properly, see the documentation for details.
 
 ## Documentation
 
