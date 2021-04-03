@@ -1,0 +1,8 @@
+{
+    "name": "rainlab/relax-theme",
+    "type": "october-theme",
+    "description": "A sample theme that demonstrates how to build a client-friendly website.",
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}
