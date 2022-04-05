@@ -9,11 +9,13 @@
             {{ parentOrSelf.title }}
         </a>
     </li>
-    {% for childPage in childPages if not childPage.navigation_hidden %}
-        <li class="{{ page.url == childPage.url ? 'active' }}">
-            <a href="{{ childPage.url|app }}">
-                {{ childPage.title }}
-            </a>
-        </li>
+    {% for childPage in childPages %}
+        {% if not childPage.navigation_hidden %}
+            <li class="{{ page.url == childPage.url ? 'active' }}">
+                <a href="{{ childPage.url|app }}">
+                    {{ childPage.title }}
+                </a>
+            </li>
+        {% endif %}
     {% endfor %}
 </ul>
