@@ -3,6 +3,7 @@ description: A sample theme that demonstrates how to build a client-friendly web
 author: October CMS
 homepage: 'http://octobercms.com'
 code: Relax
+authorCode: RainLab
 require:
     - RainLab.User
     - RainLab.Blog
